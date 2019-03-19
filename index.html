@@ -67,25 +67,45 @@
 
     <script>
 
-        var nyArray;
+       var nyArray=[];
         for (let i = 0; i < airdnb.length; i++) {
             if (typeof nyArray[airdnb[i].room_type] === "undefined") {
                 nyArray[airdnb[i].room_type] = 0;
             }
             nyArray[airdnb[i].room_type]++;
         }
-        var myValues = [];
-        var myLabels = nyArray.filter(function(value, index, array){
+        var myValues= nyArray;
+
+        var uniqArray =[];
+        var count = 0;
+        var found =false;
+
+        for (i=0; i<airdnd.length; i++){
+            for (y=0; y< uniqArray.length; y++){
+                if(airdnb[i] == uniqArray[y]){
+                    found = true;
+                }
+            }
+            count++;
+            if(count == 1 && found == false){
+                uniqArray.push(airdnb[i]);
+            }
+            count=0;
+            found = false;
+        }
+
+       /* var myLabels = [];
+        airdnb.filter(function(value, index, array){
             return array.indexOf(value) == index;
-        });
+        });*/
+    
 
         var data = [{
             values: myValues,
-            labels: myLabels,
+            labels: uniqArray,
             type: 'pie',
 
         }];
-        console.log("labels");
 
         var layout = {
             height: 400,
@@ -93,8 +113,6 @@
         };
 
         Plotly.newPlot('myDiv', data, layout);
-
-
     </script>
 
 
@@ -185,10 +203,37 @@
 
         for (let egenskap in ssss)
         /*for (let i=0; i<ssss.length;i++)*/ {
-        myValues.push(ssss[egenskap]);
+        myValues.push(ardnb[egenskap]);
         myLabels.push(egenskap);
     }
     /*console.log("")
+
+    var nyArray=[];
+        for (let i = 0; i < airdnb.length; i++) {
+            if (typeof nyArray[airdnb[i].room_type] === "undefined") {
+                nyArray[airdnb[i].room_type] = 0;
+            }
+            nyArray[airdnb[i].room_type]++;
+        }
+        var myValues= nyArray[airdnb[i].room_type];
+        var myLabels = airdnb.filter(function(value, index, array){
+            return array.indexOf(value) == index;
+        });
+    
+
+        var data = [{
+            values: myValues,
+            labels: myLabels,
+            type: 'pie',
+
+        }];
+
+        var layout = {
+            height: 400,
+            width: 500
+        };
+
+        Plotly.newPlot('myDiv', data, layout);
 }
 /* document.getElementById("myDiv").innerHTML = airdnb.rum_type;*/
     -JSON.stringfy-->
