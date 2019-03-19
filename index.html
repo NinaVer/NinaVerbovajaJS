@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <script type="text/javascript" src="javascript.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>AirDnB</title>
+
+</head>
+
+<body>
+    <h1>
+        AirDnB Plots
+    </h1>
+                       <!-- Skatterplot -->
+
+        <div id="myDiv1">
+
+        </div>
+        <script>
+            var data = airdnb;
+            var xData = [];
+            var yData = [];
+
+            for (let i = 0; i < data.length; i++) {
+                xData.push(data[i].price);
+                yData.push(data[i].reviews);
+            }
+
+            var trace1 = {
+                x: xData,
+                y: yData,
+                mode: 'markers',
+                type: 'scatter'
+            };
+
+            var data1 = [trace1];
+            var layout = {
+                xaxis: {
+                    title: {
+                        text: "Price"
+                    }
+                },
+                yaxis: {
+                    title: {
+                        text: "Reviews"
+                    }
+                }
+
+            };
+            Plotly.newPlot('myDiv1', data1, layout);
+        </script>
+
+
+    <!-- piechart-->
+        <div id="myDiv">
+        </div>
+        
+        <script>
+
+            var data = airdnb;
+            var ssss;
+            for (let i = 0; i < data.length; i++) {
+                if (typeof ssss(data[i].room_type) === "undefined") {
+                    ssss(data[i].room_type) = 0;
+                }
+                ssss(data[i].room_type)++;
+            }
+            var myValues=[];
+            var myLabels=[];
+
+            /*for (let egenskap in ssss)*/
+            for (let i=0; i<ssss.length;i++){
+                myValues.push[ssss[egenskap]];
+                myLabels.push(egenskap);
+            }
+                /*console.log("")
+            }
+            /* document.getElementById("myDiv").innerHTML = airdnb.rum_type;*/
+           
+            var datan = [{
+                values: myValues,
+                labels: myLabels,
+                type: 'pie'
+            }];
+
+            var layout = {
+                height: 400,
+                width: 500
+            };
+
+            Plotly.newPlot('myDiv', datan, layout);
+        
+
+        </script>
+
+        <div id="myDiv2">
+            <!-- Plotly chart will be drawn inside this DIV -->
+        </div>
+        <script>
+            JSON.stringfy
+            var trace1 = {
+                x: [1, 2, 3, 4],
+                y: [10, 15, 13, 17],
+                mode: 'markers',
+                type: 'scatter'
+            };
+
+            var trace2 = {
+                x: [2, 3, 4, 5],
+                y: [16, 5, 11, 9],
+                mode: 'lines',
+                type: 'scatter'
+            };
+
+            var trace3 = {
+                x: [1, 2, 3, 4],
+                y: [12, 9, 15, 12],
+                mode: 'lines+markers',
+                type: 'scatter'
+            };
+
+            var data = [trace1, trace2, trace3];
+
+            Plotly.newPlot('myDiv2', data);
+        </script>
+
+        <div id="myDiv3">
+            <!-- Plotly chart will be drawn inside this DIV -->
+        </div>
+        <script>
+            var trace1 = {
+                x: [1, 2, 3, 4],
+                y: [10, 15, 13, 17],
+                mode: 'markers',
+                type: 'scatter'
+            };
+
+            var trace2 = {
+                x: [2, 3, 4, 5],
+                y: [16, 5, 11, 9],
+                mode: 'lines',
+                type: 'scatter'
+            };
+
+            var trace3 = {
+                x: [1, 2, 3, 4],
+                y: [12, 9, 15, 12],
+                mode: 'lines+markers',
+                type: 'scatter'
+            };
+
+            var data = [trace1, trace2, trace3];
+
+            Plotly.newPlot('myDiv3', data);
+        </script>
+
+        <!-- <td><img src=alt="Ups.. något gick fel">
+                </td>
+            </tr>
+            <tr>
+                <td> <img src=alt="Ups.. något gick fel">
+                </td>
+                <td><img src=alt="Ups.. något gick fel">
+                </td>
+            </tr> 
+        </table>-->
+    
+</body>
+
+</html>
+
+
+

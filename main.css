@@ -1,0 +1,22 @@
+*{
+    padding:0;
+    margin:0;
+}
+
+body {
+    background-color: rgb(182, 186, 194);
+  }
+
+  div{
+  width: 550px;
+  height: 450px; 
+  padding: 10px; 
+  float: left; 
+}
+
+  h1 {
+    font-family: impact;
+    color:  rgb(52, 4, 65);
+    text-align: center;
+    font-weight: 50;
+  } 
