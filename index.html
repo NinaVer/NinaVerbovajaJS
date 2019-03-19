@@ -15,10 +15,12 @@
         AirDnB Plots
     </h1>
     <!-- Skatterplot -->
+    <p>
+        <div id="myDiv1">
 
-    <div id="myDiv1">
-
-    </div>
+        </div>
+    </p>
+    <br>
     <script>
         var data = airdnb;
         var xData = [];
@@ -38,6 +40,8 @@
 
         var data1 = [trace1];
         var layout = {
+            height: 400,
+            width: 500,
             xaxis: {
                 title: {
                     text: "Price"
@@ -54,33 +58,28 @@
     </script>
 
 
-    <!-- piechart-->
-    <div id="myDiv">
-    </div>
+    <p>
+        <!-- piechart-->
+        <div id="myDiv">
+        </div>
+    </p>
+    <br>
 
     <script>
 
-        var data = airdnb;
-        var ssss;
-        for (let i = 0; i < data.length; i++) {
-            if (typeof ssss[data[i].room_type] === "undefined") {
-                ssss[data[i].room_type] = 0;
+        var nyArray;
+        for (let i = 0; i < airdnb.length; i++) {
+            if (typeof nyArray[airdnb[i].room_type] === "undefined") {
+                nyArray[airdnb[i].room_type] = 0;
             }
-            ssss[data[i].room_type]++;
+            nyArray[airdnb[i].room_type]++;
         }
         var myValues = [];
-        var myLabels = [];
+        var myLabels = nyArray.filter(function(value, index, array){
+            return array.indexOf(value) == index;
+        });
 
-        for (let egenskap in ssss)
-            /*for (let i=0; i<ssss.length;i++)*/ {
-            myValues.push(ssss[egenskap]);
-            myLabels.push(egenskap);
-        }
-        /*console.log("")
-    }
-    /* document.getElementById("myDiv").innerHTML = airdnb.rum_type;*/
-
-        var datan = [{
+        var data = [{
             values: myValues,
             labels: myLabels,
             type: 'pie',
@@ -93,15 +92,19 @@
             width: 500
         };
 
-        Plotly.newPlot('myDiv', datan, layout);
+        Plotly.newPlot('myDiv', data, layout);
 
 
     </script>
 
 
-    <!-- Histogram-->
-    <div id="myDiv2"> </div>
+    <p>
+        <!-- Histogram-->
+        <div id="myDiv2"> </div>
+    </p>
+    <br></br>
     <script>
+
 
         var datan = airdnb;
         var x = [];
@@ -116,7 +119,21 @@
             type: 'histogram',
         };
         var data = [trace];
-        Plotly.newPlot('myDiv2', data);
+        var layout = {
+            height: 400,
+            width: 500,
+            xaxis: {
+                title: {
+                    text: "Pris"
+                }
+            },
+            yaxis: {
+                title: {
+                    text: "Antal"
+                }
+            }
+        };
+        Plotly.newPlot('myDiv2', data, layout);
     </script>
 
 
@@ -137,6 +154,8 @@
         };
         var data = [trace];
         var layout = {
+            height: 400,
+            width: 500,
             xaxis: {
                 title: {
                     text: "Antal accomodates per property"
@@ -146,9 +165,9 @@
                 title: {
                     text: "Gånger påträffad"
                 }
-             }
-            };
-            Plotly.newPlot('myDiv3', data, layout);
+            }
+        };
+        Plotly.newPlot('myDiv3', data, layout);
     </script>
 
 
@@ -162,8 +181,17 @@
                 <td><img src=alt="Ups.. något gick fel">
                 </td>
             </tr> 
-        </table>-->
-    <!--JSON.stringfy-->
+        </table>
+
+        for (let egenskap in ssss)
+        /*for (let i=0; i<ssss.length;i++)*/ {
+        myValues.push(ssss[egenskap]);
+        myLabels.push(egenskap);
+    }
+    /*console.log("")
+}
+/* document.getElementById("myDiv").innerHTML = airdnb.rum_type;*/
+    -JSON.stringfy-->
 
 
 </body>
