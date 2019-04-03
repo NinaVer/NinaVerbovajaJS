@@ -1,5 +1,0 @@
-
-https://github.com/NinaVer/NinaVerbovajaJS.git
-
-
-Pie-diagramm fungerar inte. Ville skapa dynamisk variant men misslyckades.

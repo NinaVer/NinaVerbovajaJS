@@ -7,12 +7,14 @@
     <script type="text/javascript" src="javascript.js"></script>
     <script type="text/javascript" src="airdnb.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+     <!-- Numeric JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/numeric/1.2.6/numeric.min.js"></script>
     <title>AirDnB</title>
 
 </head>
 
 <body>
-     
+
     <h1>
         AirDnB Plots
     </h1>
@@ -60,52 +62,16 @@
     </script>
 
 
-    <p>
-        <!-- piechart-->
-        <div id="myDiv">
-        </div>
-    </p>
-    <br>
-
-    <script>
-
-       var nyArray=[];
-        for (let i = 0; i < airdnb.length; i++) {
-            if (typeof nyArray[airdnb[i].room_type] === "undefined") {
-                nyArray[airdnb[i].room_type] = 0;
-            }
-            nyArray[airdnb[i].room_type]++;
-        }
-        var myValues= nyArray;
-
-        var uniqArray =[];
-        var count = 0;
-        var found =false;
-
-        for (i=0; i<airdnd.length; i++){
-            for (y=0; y< uniqArray.length; y++){
-                if(airdnb[i] == uniqArray[y]){
-                    found = true;
-                }
-            }
-            count++;
-            if(count == 1 && found == false){
-                uniqArray.push(airdnb[i]);
-            }
-            count=0;
-            found = false;
-        }
-
-       /* var myLabels = [];
-        airdnb.filter(function(value, index, array){
-            return array.indexOf(value) == index;
-        });*/
     
-
+     <!--/*Skapar en array med distinkta namn på room_type*/
+   
+  
+        let myValues =[{countE, countP, countS}]
+        
         var data = [{
-            values: myValues,
-            labels: uniqArray,
-            type: 'pie',
+            values:[261,184,2],
+            labels: ['Entire home/apt', 'Private room', 'Shared room'],
+            type: 'pie'
 
         }];
 
@@ -115,11 +81,50 @@
         };
 
         Plotly.newPlot('myDiv', data, layout);
-    </script>
+   
 
+<p>--> 
+        <!-- piechart-->
+       <p>
+        <div id="myDiv">
+        </div>
+    </p>
+    <br>
+
+    <script>
+    /*let room = [... new Set(airdnb.map(roomt => roomt.room_type))]*/
+   /*console.log(room);
+  
+   /*Räknar antalet av varje roon_type för sig själv*/ 
+ /* let countE = airdnb.reduce(function (r, a) {
+    return r + +(a.room_type === "Entire home/apt");
+},0);
+
+let countP = airdnb.reduce(function (r, a) {
+  return r + +(a.room_type === "Private room");
+},0);
+
+let countS = airdnb.reduce(function (r, a) {
+  return r + +(a.room_type === "Shared room");
+},0);*/
+  var data = [{
+            values:[261,184,2],
+            labels: ['Entire home/apt', 'Private room', 'Shared room'],
+            type: 'pie'
+
+        }];
+
+        var layout = {
+            height: 400,
+            width: 500
+        };
+
+        Plotly.newPlot('myDiv', data, layout);
+
+ </script>
 
     <p>
-        <!-- Histogram-->
+        <!--Histogram-->
         <div id="myDiv2"> </div>
     </p>
     <br></br>
@@ -192,55 +197,7 @@
 
 
 
-    <!-- <td><img src=alt="Ups.. något gick fel">
-                </td>
-            </tr>
-            <tr>
-                <td> <img src=alt="Ups.. något gick fel">
-                </td>
-                <td><img src=alt="Ups.. något gick fel">
-                </td>
-            </tr> 
-        </table>
 
-        for (let egenskap in ssss)
-        /*for (let i=0; i<ssss.length;i++)*/ {
-        myValues.push(ardnb[egenskap]);
-        myLabels.push(egenskap);
-    }
-    /*console.log("")
-
-    var nyArray=[];
-        for (let i = 0; i < airdnb.length; i++) {
-            if (typeof nyArray[airdnb[i].room_type] === "undefined") {
-                nyArray[airdnb[i].room_type] = 0;
-            }
-            nyArray[airdnb[i].room_type]++;
-        }
-        var myValues= nyArray[airdnb[i].room_type];
-        var myLabels = airdnb.filter(function(value, index, array){
-            return array.indexOf(value) == index;
-        });
-    
-
-        var data = [{
-            values: myValues,
-            labels: myLabels,
-            type: 'pie',
-
-        }];
-
-        var layout = {
-            height: 400,
-            width: 500
-        };
-
-        Plotly.newPlot('myDiv', data, layout);
-}
-/* document.getElementById("myDiv").innerHTML = airdnb.rum_type;*/
-    -JSON.stringfy-->
+        
 
 
-</body>
-
-</html>
